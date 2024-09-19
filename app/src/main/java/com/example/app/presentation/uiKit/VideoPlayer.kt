@@ -19,7 +19,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
-import androidx.media3.common.util.Log
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.ui.PlayerView
 
@@ -31,7 +30,6 @@ fun VideoPlayer(
     uri: String,
     modifier: Modifier = Modifier,
 ) {
-
     var position by rememberSaveable { mutableLongStateOf(-1L) }
 
     exoPlayer.apply {
@@ -71,6 +69,7 @@ fun VideoPlayer(
                     it.onPause()
                     it.player?.pause()
                 }
+
                 Lifecycle.Event.ON_RESUME -> {
                     if (position >= 0) {
                         exoPlayer.seekTo(position)
@@ -78,6 +77,7 @@ fun VideoPlayer(
                     it.onResume()
                     it.player?.playWhenReady = true
                 }
+
                 else -> Unit
             }
         },

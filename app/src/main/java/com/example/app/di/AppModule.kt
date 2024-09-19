@@ -2,8 +2,6 @@ package com.example.app.di
 
 import android.app.Application
 import android.content.Context
-import androidx.media3.common.Player
-import androidx.media3.exoplayer.ExoPlayer
 import com.example.app.data.repositories.FirestoreRepository
 import com.example.app.data.repositories.IFirestoreRepository
 import com.google.firebase.firestore.FirebaseFirestore
@@ -18,14 +16,6 @@ import dagger.hilt.android.scopes.ViewModelScoped
 @Module
 @InstallIn(ViewModelComponent::class)
 object AppModule {
-
-    @Provides
-    @ViewModelScoped
-    fun provideVideoPlayer(app: Application): Player {
-        return ExoPlayer.Builder(app)
-            .build()
-    }
-
     @Provides
     @ViewModelScoped
     fun provideContext(application: Application): Context = application.applicationContext

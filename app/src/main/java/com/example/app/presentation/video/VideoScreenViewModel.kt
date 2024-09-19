@@ -21,7 +21,6 @@ class VideoScreenViewModel @Inject constructor(
     private val captureVideoTimestampUseCase: CaptureVideoTimestampUseCase,
 ) : ViewModel() {
 
-
     private val _currentVideo = MutableStateFlow<VideoInformation?>(null)
     val currentVideo: StateFlow<VideoInformation?> = _currentVideo
 
